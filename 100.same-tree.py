@@ -17,7 +17,6 @@ class Solution:
             flag &= self.isSameTree(p.left, q.left)
             flag &= self.isSameTree(p.right, q.right)
             return flag
-        else:
-            return p is None and q is None
+        return p is q
 
 
