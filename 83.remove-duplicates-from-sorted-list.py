@@ -18,6 +18,6 @@ class Solution:
                 cur.next = cur.next.next
             else:
                 cur = cur.next
-        else:
-            return head
+                
+        return head
 
