@@ -10,6 +10,21 @@
 #         self.left = None
 #         self.right = None
 
+#recursion
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        def isMirror(left, right):
+            if left and right:
+                return (left.val == right.val) & isMirror(left.left, right.right) & isMirror(left.right, right.left)
+            return left is right
+        if not root:
+            return True
+        return isMirror(root.left, root.right)
+
+
+
+'''
+# dummy version
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         if p and q:
@@ -34,4 +49,4 @@ class Solution:
             return self.isSameTree(root.left, root.right)
 
         return root.left is root.right
-
+'''
