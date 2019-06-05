@@ -12,20 +12,12 @@
 class Solution:
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         cur = head
-        if head == None:
-            return head 
 
-        while cur.next is not None:
-            if cur.next.next is not None:
-                if cur.val == cur.next.val:
-                    cur.next = cur.next.next
-                else:
-                    cur = cur.next
+        while cur and cur.next is not None:
+            if cur.val == cur.next.val:
+                cur.next = cur.next.next
             else:
-                if cur.val == cur.next.val:
-                    cur.next = None
-                else:
-                    return head
+                cur = cur.next
         else:
             return head
 
