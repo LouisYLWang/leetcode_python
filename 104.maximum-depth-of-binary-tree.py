@@ -13,7 +13,7 @@
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
         count = 1
-        max_dep = 0
+        max_dep = 1
         def DFS(cur):
             nonlocal count
             nonlocal max_dep
@@ -25,6 +25,10 @@ class Solution:
                     DFS(cur.right)
                 count += 1
                 max_dep = max(count, max_dep)
+
+        if root is None:
+            return 0
+        
 
         DFS(root)
         return max_dep
