@@ -12,26 +12,25 @@
 
 class Solution:
     def maxDepth(self, root: TreeNode) -> int:
-        count = 1
-        max_dep = 1
+        #count = 0
+        #max_dep = 1
         def DFS(cur):
-            nonlocal count
-            nonlocal max_dep
-                
-            if (cur.left is not None) | (cur.right is not None):
-                if cur.left:
-                    DFS(cur.left)
-                if cur.right:
-                    DFS(cur.right)
-                count += 1
-                max_dep = max(count, max_dep)
+            #nonlocal count
+            #nonlocal max_dep
+
+            if cur is not None:
+                if (cur.left is None) & (cur.right is None):
+                    return 1
+                if (cur.left is not None) | (cur.right is not None):
+                    return max(DFS(cur.left), DFS(cur.right)) + 1
+            return 0
 
         if root is None:
             return 0
         
 
-        DFS(root)
-        return max_dep
+        return DFS(root)
+        #return #count + 1
 
 
 

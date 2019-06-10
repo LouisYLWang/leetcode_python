@@ -3,6 +3,16 @@
 #
 # [118] Pascal's Triangle
 #
+
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        
+        
+
+# todo: find a recursive method
+
+# dummy method
+'''
 class Solution:
     def generate(self, numRows: int) -> List[List[int]]:
         if numRows == 0:
@@ -21,7 +31,7 @@ class Solution:
             i +=1 
             
         return res
-                
+'''          
 
         
 
