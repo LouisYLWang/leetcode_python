@@ -13,7 +13,6 @@
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         result = True
-        
         def getHeight(root):
             nonlocal result
             if not root:
