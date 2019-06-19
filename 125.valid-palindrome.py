@@ -3,6 +3,7 @@
 #
 # [125] Valid Palindrome
 #
+
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         alphabet =  'abcdefghijklmnopqrstuvwxyz0123456789'
@@ -20,7 +21,7 @@ class Solution:
                 else:return False
 
         return True
-''''        
+'''    
 class Solution:
     def isPalindrome(self, s: str) -> bool:
         alphabet =  'abcdefghijklmnopqrstuvwxyz0123456789'
@@ -32,16 +33,17 @@ class Solution:
             while s and s[-1] not in alphabet:
                 s = s[:-1]
             if s:
-                s_rev = s[0] + s_rev
-                s = s[1:]
-            
+                s_rev += s[-1] 
+                s = s[:-1]
+
+
             #if s:
             #    if s[0] == s[-1]:
             #        s = s[1:-1]
             #    else:return False
 
         return s == s_rev
-
 '''
+
 
 
