@@ -15,7 +15,7 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        '''
+        
         cur = headA
         while cur.next:
             cur.val = "(%s)" %str(cur.val)
@@ -27,7 +27,7 @@ class Solution(object):
                 if cur.val[0] == "(" and cur.val[-1] == ")":
                     return cur.val[1:-1]
             cur = cur.next
-        '''
+        
 
         
         
