@@ -28,4 +28,3 @@ class Solution(object):
         return nums[len(nums)//2]
     '''
     
-
