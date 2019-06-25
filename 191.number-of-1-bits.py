@@ -9,5 +9,11 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
+        res = 0
+        n = int('0b'+ str(n),2)
+        while n:
+            if n != n >> 1 << 1:
+                res += 1
+            n = n >> 1
+        return res
 
