@@ -4,18 +4,18 @@
 # [190] Reverse Bits
 #
 class Solution:
-    # @param n, an integer
-    # @return an integer
     def reverseBits(self, n):
+        #n = int('0b'+ str(n),2)
         res = 0
-        count = 0
-        a = ""
-        for i in bin(int("0b"+ str(n),2) ^ 4294967295)[2:]:
-            a += str(~int(i) + 2)
-            res += 2 ** count * (~int(i) + 2)
-            count += 1
-        return res 
-        
-            
-        
+        i = 0
+        while i < 31:
+            res ^= (n >> 1 << 1 ^ n)
+            n = n >> 1
+            res = res << 1
+            i += 1
+        if n:
+            res ^= (n >> 1 << 1 ^ n)
+        return res
+     
+
 
