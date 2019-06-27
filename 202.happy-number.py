@@ -12,7 +12,12 @@ class Solution(object):
         :rtype: bool
         """
         if (n in self.table_b) or n == 2 or n == 3:
+            self.table_b.clear()
             return False
+        
+        if n == 1 or n == 10 or n == 100:
+            self.table_b.clear()
+            return True
         
         res = 0
         for i in str(n):
@@ -22,9 +27,8 @@ class Solution(object):
             else:
                 self.table_a[cur] = cur**2
                 res += cur**2
-        if res == 1:
-            return True
-        print(res)
+
+
         self.table_b.add(n)
         return self.isHappy(res)
 
