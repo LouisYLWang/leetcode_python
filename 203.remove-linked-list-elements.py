@@ -16,18 +16,16 @@ class Solution(object):
         :type val: int
         :rtype: ListNode
         """
+        while head:
+            if head.val == val:
+                head = head.next
+            else:break
         cur = head 
-        if cur.val == val:
-            head = cur.next
-
-        while cur.next.next:
-            if cur.next.val == val:
-                cur.next = cur.next.next
-                cur = cur.next
-                
-        if cur.next.val == val:
-            cur.next = None
-        
+        while cur:
+            if cur.val == val:
+                pre.next = cur = cur.next
+            else:
+                pre, cur = cur, cur.next
         return head
             
             
