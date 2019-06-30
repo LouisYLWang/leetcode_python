@@ -10,9 +10,9 @@ class Solution(object):
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
         """
+        n = len(nums)
+        if k > n:
+            k = k - n
+        nums[:] = nums[-k:] + nums[:-k]
 
-        i = 0
-        while i != k:
-            nums[:] = [nums[-1]] + nums[:-1]
-            i +=1
             
