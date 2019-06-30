@@ -4,6 +4,11 @@
 # [205] Isomorphic Strings
 #
 class Solution(object):
+    #pretty smart solution
+    def isIsomorphic5(self, s, t):
+        return map(s.find, s) == map(t.find, t)
+
+    #my method
     def isIsomorphic(self, s, t):
         """
         :type s: str
