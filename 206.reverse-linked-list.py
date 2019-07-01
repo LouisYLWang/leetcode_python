@@ -24,5 +24,26 @@ class Solution:
         cur = head
         return head
         
+# recursive method (slow)
+
+class Solution:
+    def reverseList(self, head):
+        res = head
+        def reverse(cur):
+            nonlocal res
+            if not cur:
+                return res
+            
+            if cur.next:
+                reverse(cur.next)
+                cur.next.next = cur 
+            else:
+                res = cur        
+            
+            if cur == head:
+                cur.next = None
+                return res
         
+        return reverse(head)
+
 
