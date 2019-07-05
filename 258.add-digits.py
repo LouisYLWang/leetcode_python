@@ -9,10 +9,8 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
-        sum = 0 
-        for i in str(num):
-            sum += int(i)
-        if sum <= 9:
-            return sum
-        else:
-            self.addDigits(sum)
+        if num < 9:
+            return num 
+        for i in range(1,10):
+            if (num - i)%9 == 0:
+                return i
