@@ -11,8 +11,8 @@ class Solution(object):
         """
         if n == 0:
             return False
-        return ~(n & (n-1))
-
+        return not(n & (n-1))
+    '''
     def isPowerOfTwo(self, n):
         """
         :type n: int
@@ -23,5 +23,5 @@ class Solution(object):
         if n == 1:
             return True
         return int(bin(n)[3:]) == 0 and int(bin(n)[2]) == 1
-
+    '''
 
