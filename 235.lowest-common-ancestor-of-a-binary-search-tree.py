@@ -18,11 +18,11 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        while root:
+        if root:
             print(root.val)
-
             if root.left or root.right:
                 cur_list = [root.val, root.left.val, root.right.val]
+                print(cur_list)
                 if (p in cur_list) and (q in cur_list):
                     return root.val
                 else:
