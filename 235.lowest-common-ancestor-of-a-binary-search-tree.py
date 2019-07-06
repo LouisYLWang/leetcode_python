@@ -30,7 +30,7 @@ class Solution(object):
                         self.lowestCommonAncestor(root.left, p, q)
                     if root.right:
                         self.lowestCommonAncestor(root.right, p, q)
-
+        return root.val
             
 
 
