@@ -4,7 +4,7 @@
 # [263] Ugly Number
 #
 class Solution(object):
-    def isUgly(self, num: int):
+    def isUgly(self, num):
         if num:
             while num%2 == 0:
                 num /=2
