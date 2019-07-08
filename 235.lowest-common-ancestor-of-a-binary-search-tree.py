@@ -18,19 +18,16 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
-        if root:
-            print(root.val)
-            if root.left or root.right:
-                cur_list = [root.val, root.left.val, root.right.val]
-                print(cur_list)
-                if (p in cur_list) and (q in cur_list):
-                    return root.val
-                else:
-                    if root.left:
-                        self.lowestCommonAncestor(root.left, p, q)
-                    if root.right:
-                        self.lowestCommonAncestor(root.right, p, q)
-        return root.val
-            
+        #make sure p < q
+        if p.val > q.val:
+            p,q = q,p
+        if not root:
+            return root
+        if p.val <= root.val and q.val >= root.val:
+            return root
+        elif q.val <= root.val:
+            return self.lowestCommonAncestor(root.left, p,q)
+        else:
+            return self.lowestCommonAncestor(root.right, p,q)
 
 
