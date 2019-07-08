@@ -13,6 +13,21 @@
 # def isBadVersion(version):
 
 class Solution(object):
+    # better 
+    def firstBadVersion(self, n):
+        if n:
+            upper = n
+            lower = 0
+            while upper - lower > 1:
+                mid = (upper + lower) // 2 
+                if isBadVersion(mid):
+                    upper = mid
+                else: 
+                    lower = mid
+            return upper
+
+
+
     def firstBadVersion(self, n):
         """
         :type n: int
@@ -34,6 +49,6 @@ class Solution(object):
                     else:
                         lower = lower_pre
             return upper
-
+    
         
 
