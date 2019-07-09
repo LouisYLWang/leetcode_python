@@ -11,28 +11,21 @@
 #         self.right = None
 
 class Solution:
-
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
-        res = [[root.val]]
-        def getSubls(root):
-            #res.insert(0, [root.left.val, root.right.val])
-            subs = list()
-        
-
-            if root:
-                if root.left is not None:
-                    subs.append(root.left.val)
-                if root.right is not None:
-                    subs.append(root.right.val)
-        
-
-            if subs:
-                if getSubls(root.left) + getSubls(root.right):
-                    res.insert(0, getSubls(root.left) + getSubls(root.right))  
-                res.insert(0,subs)
-                return subs
-
-        print(root.val)
-        getSubls(root)
+        res = []
+        if root:
+            queue = [root]
+            temp_len = 1
+            while queue:
+                temp_len = len(queue)
+                res.insert(0, list(map(lambda x: x.val, queue)))
+                while temp_len:
+                    cur = queue.pop(0)
+                    if cur.left:
+                        queue.append(cur.left)
+                    if cur.right:
+                        queue.append(cur.right)
+                    temp_len -= 1
         return res
+
     
