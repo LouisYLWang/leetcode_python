@@ -9,6 +9,8 @@
 #         self.val = x
 #         self.next = None
 
+# Definition for singly-linked list.
+
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
         """
@@ -16,19 +18,18 @@ class Solution(object):
         :rtype: ListNode
         """
         
-        cur = headA
-        while cur.next:
-            cur.val = "(%s)" %str(cur.val)
-            cur = cur.next
-        
-        cur = headB
-        while cur.next:
-            if type(cur.val) == str:
-                if cur.val[0] == "(" and cur.val[-1] == ")":
-                    return cur.val[1:-1]
-            cur = cur.next
-        
-
-        
+        cur_a = headA
+        cur_b = headB
+        while cur_a != cur_b:
+            if cur_a:
+                cur_a = cur_a.next 
+            else:
+                cur_a = headB
+                
+            if cur_b:
+                cur_b = cur_b.next
+            else:
+                cur_b = headA
+        return cur_a
         
 
