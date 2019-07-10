@@ -9,7 +9,7 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        if n %100%4:
+        if n%4:
             return True
         return False
 
