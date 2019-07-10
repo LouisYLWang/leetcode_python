@@ -13,9 +13,7 @@ class NumArray(object):
         cur_sum = 0
         for i in nums:
             cur_sum += i
-            self.res_ls.append(cur_sum)
-        print(self.res_ls)
-        
+            self.res_ls.append(cur_sum)        
 
     def sumRange(self, i, j):
         """
