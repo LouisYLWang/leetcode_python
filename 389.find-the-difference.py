@@ -14,5 +14,5 @@ class Solution(object):
         res = 0
         for i in target:
             res ^= ord(i)
-        return i
+        return chr(res)
 
