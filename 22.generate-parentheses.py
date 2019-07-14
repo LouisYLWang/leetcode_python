@@ -23,3 +23,5 @@ class Solution:
             res.append(self.generateParenthesis(i)[0] + self.generateParenthesis(n-i)[0])
         res.append(self.generateParenthesis(n-1)[-1] +"()")
         return res
+
+        #"()(())()"
