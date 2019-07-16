@@ -17,10 +17,16 @@ class Solution(object):
         :rtype: int
         """
         res = 0
-        while root:
-            if root.left:
-                res += root.left.val
-                self.sumOfLeftLeaves(root.left)
-            if root.right:
-                self.sumOfLeftLeaves(root.right)
-            return res
+        if root:
+            stack = [root]
+            while stack:
+                cur = stack.pop()
+                if cur.left:
+                    stack.append(cur.left)
+                    if not cur.left.left and not cur.left.right:
+                        res += cur.left.val
+                if cur.right:
+                    stack.append(cur.right)
+        return res 
+                
+
