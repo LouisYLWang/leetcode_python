@@ -9,7 +9,23 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        tube = [-float("inf")] * 3
+
+        for i in nums:
+            if i not in tube:
+                if i > tube[0]:
+                    tube[0] = i
+                    if i > tube[1]:
+                        tube[0], tube[1] = tube[1], tube[0]
+                    if i > tube[2]:
+                        tube[1], tube[2] = tube[2], tube[1]
+
+        if tube[0] == -float("inf"):
+            return tube[2]
+        return tube[0]
+
         #theoratical works but with not on special cases
+        '''
         max_ = max(nums)
         min_ = min(nums)      
         bitmap = [0] * (max_ - min_ + 1)
@@ -30,5 +46,5 @@ class Solution(object):
                     find += 1
                 i += 1
             return max_ - i + 1
-
+        '''
 
