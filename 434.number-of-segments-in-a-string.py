@@ -9,6 +9,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        a = s.split()
-        return len(a) 
+        
+        res = 0
+        i = 0 
+        if s:
+            while i < len(s) - 1:
+                if s[i] == " " and s[i+1] != " ":
+                    res += 1
+                i += 1
+            if s[0] != " ":
+                return res + 1
+        return res 
 
