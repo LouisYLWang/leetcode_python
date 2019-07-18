@@ -10,13 +10,13 @@ class Solution(object):
         :type b: int
         :rtype: int
         """
-        c = a ^ b
+
         d = a & b 
         if d!= 0:
-            d << 1
-            return self.getSum(c,d)
+            d <<= 1
+            return self.getSum(d, a ^ b)
         else:
-            return c
+            return a ^ b
         '''
         cursor = 1
         sum_ = 0
