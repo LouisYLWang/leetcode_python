@@ -22,6 +22,9 @@ class Solution(object):
             if ~c <= MASK//2 and c <= MASK//2:
                 return c
             return c ^ -MASK
+    
+    #alternative:
+
 
 
 
