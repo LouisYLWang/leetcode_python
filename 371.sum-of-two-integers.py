@@ -4,6 +4,7 @@
 # [371] Sum of Two Integers
 #
 class Solution(object):
+
     def getSum(self, a, b):
         """
         :type a: int
@@ -11,27 +12,16 @@ class Solution(object):
         :rtype: int
         """
 
-        d = a & b 
+        MASK = 0x100000000     
+        c = a ^ b % MASK
+        d = a & b % MASK
         if d!= 0:
             d <<= 1
-            return self.getSum(d, a ^ b)
+            return self.getSum(c, d)
         else:
-            return a ^ b
-        '''
-        cursor = 1
-        sum_ = 0
-        carry = 0
-        while cursor != 0:
-            a_ = a & cursor
-            b_ = b & cursor
-            cur_res = a_ ^ b_
-            sum_ |= cur_res ^ carry
-            carry = (a_ & b_) | cur_res & carry
-            cursor <<= 1
-            carry <<= 1
-        return sum_
-        '''
-
+            if ~c <= MASK//2 and c <= MASK//2:
+                return c
+            return c ^ -MASK
 
 
 
