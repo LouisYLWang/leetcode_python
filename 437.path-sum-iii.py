@@ -19,23 +19,34 @@ class Solution(object):
         """
         stack = [root]
         sum_hash = dict()
+    
 
         def getPath(node):
-            path_, sum_ = [], []
-            if not node.left and not node.right:
-                path_, sum_ = [[node.val]], [node.val]
-                return path_, sum_
-              
-            if node.left:
-                path_l, sum_l = getPath(node.left)
-                for path_, sum_ in zip(path_l, sum_l):
-                    path_.append([node.val]+path_, node.val+sum_)
-            if node.right:
-                path_r, sum_r = getPath(node.right)
-                for path_, sum_ in zip(path_r, sum_r):
-                    path_.append([node.val]+path_, node.val+sum_)
-            return path_, sum_
+            path_, sum_, res_ = list(), list(), list()
+            path_, sum_ = [[node.val]], [node.val]
+            if node.val == sum:
+                res_.append([node.val])
 
-        print(getPath(root))
+            if node.left:
+                path_l, sum_l, res_l = getPath(node.left)
+                res_ += res_l
+                for p, s in zip(path_l, sum_l):
+                    path_.append([node.val]+p)
+                    sum_.append(node.val+s)
+                    if node.val+s == sum:
+                        res_.append([node.val]+p)
+            if node.right:
+                path_r, sum_r, res_r = getPath(node.right)
+                res_ += res_r
+                for p, s in zip(path_r, sum_r):
+                    path_.append([node.val]+p)
+                    sum_.append(node.val+s)
+                    if node.val+s == sum:
+                        res_.append([node.val]+p)
+
+            return path_, sum_, res_
+        if root:
+            return len(getPath(root)[2])
+        return 0
 
 
