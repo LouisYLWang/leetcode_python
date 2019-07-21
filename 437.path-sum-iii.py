@@ -11,42 +11,36 @@
 #         self.right = None
 
 class Solution(object):
+    count = 0
     def pathSum(self, root, sum):
         """
         :type root: TreeNode
         :type sum: int
         :rtype: int
         """
-        stack = [root]
-        sum_hash = dict()
-    
 
         def getPath(node):
-            path_, sum_, res_ = list(), list(), list()
-            path_, sum_ = [[node.val]], [node.val]
+            sum_ = [node.val]
             if node.val == sum:
-                res_.append([node.val])
+                self.count += 1
 
             if node.left:
-                path_l, sum_l, res_l = getPath(node.left)
-                res_ += res_l
-                for p, s in zip(path_l, sum_l):
-                    path_.append([node.val]+p)
+                sum_l = getPath(node.left)
+                for s in sum_l:
                     sum_.append(node.val+s)
                     if node.val+s == sum:
-                        res_.append([node.val]+p)
+                        self.count += 1
             if node.right:
-                path_r, sum_r, res_r = getPath(node.right)
-                res_ += res_r
-                for p, s in zip(path_r, sum_r):
-                    path_.append([node.val]+p)
+                sum_r = getPath(node.right)
+                for s in sum_r:
                     sum_.append(node.val+s)
                     if node.val+s == sum:
-                        res_.append([node.val]+p)
-
-            return path_, sum_, res_
+                        self.count += 1
+            #print(node.val, sum_)
+            return sum_
         if root:
-            return len(getPath(root)[2])
+            getPath(root)
+            return self.count
         return 0
-
+437
 
