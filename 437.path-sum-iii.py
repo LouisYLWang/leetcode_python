@@ -42,5 +42,4 @@ class Solution(object):
             getPath(root)
             return self.count
         return 0
-437
 
