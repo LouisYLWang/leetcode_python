@@ -10,10 +10,10 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
-        target = dict([[i, 0] for i in t])
-        for i in t: target[i] += 1
-        
         window = dict([[i, 0] for i in t])
+        for i in t: window[i] += 1
+        
+        #window = dict([[i, 0] for i in t])
         res = ""
         left, right = 0, 0
         counter = 0
