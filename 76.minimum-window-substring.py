@@ -16,17 +16,23 @@ class Solution(object):
         window = dict([[i, 0] for i in t])
         res = ""
         left, right = 0, 0
+        counter = 0
         i = 0
+        min_len = -float('inf')
+
         while right < len(s):
-            if s[right] in target:
-                window[i] += 1
-                left, right = i, i
-                right += 1
-
-
-                while target != window:
-                    left += 1
-                res = t[left:right]
+            if window[s[right]] > 0:
+                counter -= 1
+            window[s[right]] -= 1
+            right += 1
+            while counter == 0:
+                if min_len > right - left:
+                    min_len = right - left
+                    res = t[left:right]
+                if window[s[left]] == 0:
+                    counter -= 1
+                window[s[left]] += 1
+                left += 1
         return res 
 
 
