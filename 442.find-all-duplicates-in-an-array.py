@@ -4,6 +4,18 @@
 # [442] Find All Duplicates in an Array
 #
 class Solution(object):
+    # standard method
+    def findDuplicates(self, nums):
+        res = []
+        for n in nums:
+            if nums[abs(n)-1] > 0:
+                nums[abs(n)-1] *= -1
+            else:
+                res.append(abs(n))
+        print(nums)
+        return res
+
+
     # self - implemented (slow with binary)
     def findDuplicates(self, nums):
         """
