@@ -12,7 +12,6 @@ class Solution(object):
                 nums[abs(n)-1] *= -1
             else:
                 res.append(abs(n))
-        print(nums)
         return res
 
 
