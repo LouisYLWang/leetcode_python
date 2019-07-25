@@ -3,11 +3,12 @@
 #
 # [453] Minimum Moves to Equal Array Elements
 #
-class Solution(object):
+class Solution:
     def minMoves(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
+        minvalue = min(nums)
+        sum_ = sum(nums)
+        n = len(nums)
+        return sum_ - minvalue * n
         
-
+        
+        
