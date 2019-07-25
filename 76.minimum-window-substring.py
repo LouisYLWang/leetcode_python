@@ -10,120 +10,73 @@ class Solution(object):
         :type t: str
         :rtype: str
         """
+        target = dict([[i, 0] for i in t]) 
+        for i in t: target[i] += 1
         t_map = dict([[i, 0] for i in t]) 
-        #print(t_map.keys())
-        for i in t: t_map[i] += 1
-        #print(t_map.values())
         left, right = 0, 0
-        cache = t_map.copy()
-        #counter = 0
+        count = len(t)
         min_len = float("inf")
         res = ""
-        while right < len(s):
-            while max(cache.values()) > 0 and right < len(s):
-                #print(right, s[right])
-                if s[right] in cache:
-                    cache[s[right]] -= 1
-                #print(cache.values())
-                #print(max(cache.values()))
+        flag = False
+        while right < len(s) + 1:
+            if not flag:
+                if right == len(s):
+                    break
+                if s[right] in t_map:
+                    t_map[s[right]] += 1
                 right += 1
-                #counter += 1
-            #print(s[left:right])
-            i = left
-            #print(right)
-            
-            
-            while i < right:
-                print(s[i],left,s[left],cache.values())
-                if s[i] not in cache:
-                    left += 1
-                elif cache[s[i]] <0:
-                    cache[s[i]] += 1
-                    left += 1
-                else:
-                    break   
-                i += 1
-            
-
-                #while cache[s[i]] <0:
-                #    cache[s[i]] += 1
-                #    left += 1
-            
-                #i += 1
                 
-                
-                #print(s[i],left,s[left], cache[s[left]])
-                #while cache[s[left]] <= 0:
-                #    print(left)
-                #    left += 1
-                #i += 1
-            if s[left:right]:
+            else:
                 if right - left < min_len:
                     res = s[left:right]
                     min_len = right - left
-                #print(cur,s[left:right], min_len)
-                #print("res:" + s[left:right])
-                left = right
-                cache = t_map.copy()
-                counter = 0
-        return res            
-    
-            #print(s[left:right])
+                if s[left] in t_map:
+                    t_map[s[left]] -= 1
+                left += 1              
+            flag = True
+            for i in t_map:
+                flag &= target[i] <= t_map[i]
+        return res
             
-            #print(s[i],left,s[left], s[i] in cache)
-            #while s[i] not in cache:
-                #print(s[i],left,s[left], s[i] in cache)
-            #    i += 1
-            #    left += 1
-            #counter -= 1
-        '''               
-        while i < right:
-            print(s[i],left,s[left], s[i] in cache, cache.values())
-            #if s[i] not in cache:
-
-            while s[i] not in t:
-                print(s[i],left,s[left], s[i] in cache, cache.values())
-                left += 1
-                i += 1
-
-            if cache[s[i]] < 0:
-                left += 1
-                cache[s[i]] += 1
-            i += 1
-            #else:
-            #    left += 1
-        '''       
-
-      
-
-
-
-
-
-        '''
-        window = dict([[i, 0] for i in t])
-        for i in t: window[i] += 1
         
-        #window = dict([[i, 0] for i in t])
-        res = ""    
-        left, right = 0, 0
-        counter = 0
-        i = 0
-        min_len = -float('inf')
-
-        while right < len(s):
-            if window[s[right]] > 0:
-                counter -= 1
-            window[s[right]] -= 1
-            right += 1
-            while counter == 0:
-                if min_len > right - left:
-                    min_len = right - left
-                    res = t[left:right]
-                if window[s[left]] == 0:
-                    counter -= 1
-                window[s[left]] += 1
-                left += 1
-        return res 
         '''
+        t_map = dict([[i, 0] for i in t]) 
+        for i in t: t_map[i] += 1
+        left, right = 0, 0
+        cache = t_map.copy()
+        min_len = float("inf")
+        res = ""
+        while right < len(s):
+            while max(cache.values()) > 0:
+                if s[right] in cache:
+                    cache[s[right]] -= 1
+
+                right += 1
+
+            if max(cache.values()) <= 0:
+                i = left
+
+                while i < right:
+                    if s[i] not in cache:
+                        left += 1
+                    else:
+                        if cache[s[i]] <0:
+                            cache[s[i]] += 1
+                            left += 1
+                        else:break   
+                    i += 1
+
+                if s[left:right]:
+                    if right - left < min_len:
+                        res = s[left:right]
+                        min_len = right - left
+
+                    cache = t_map.copy()
+                    counter = 0
+                    left = right
+        return res            
+        '''
+
+
+
 
