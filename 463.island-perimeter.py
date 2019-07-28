@@ -1,10 +1,10 @@
 #
-# @lc app=leetcode id=463 lang=python
+# @lc app=leetcode id=463 lang=python3
 #
 # [463] Island Perimeter
 #
 class Solution(object):
-
+    
     # standard method
     def islandPerimeter(self, grid):
         length = len(grid)
@@ -20,7 +20,7 @@ class Solution(object):
         return prm * 2
 
     
-    # dummy O(2*m*n) method
+    # O(2*m*n) method
     def islandPerimeter(self, grid):
         """
         :type grid: List[List[int]]
@@ -61,7 +61,7 @@ class Solution(object):
             i += 1
 
         return 4 * plus - 2 * minus
-    '''
+    
         
         
 
