@@ -3,6 +3,7 @@
 #
 # [438] Find All Anagrams in a String
 #
+
 class Solution(object):
     def findAnagrams(self, s, p):
         """
@@ -10,24 +11,32 @@ class Solution(object):
         :type p: str
         :rtype: List[int]
         """
-        i = 0
-        l_p = len(p)
-        target = sum(map(ord, p))
-        p_ls = list(p)
-        p_ls.sort()
-        #print(target)
-        res = []
-        while i < len(s):
-            cur = s[i:i+l_p]
-            #print(cur, sum(map(ord, cur)))
-            if sum(map(ord, cur)) == target:
-                cur_ls = list(cur)
-                cur_ls.sort()            
-                if cur_ls == p_ls:
-                    res.append(i)
-            i += 1
-        return res
+        ans = list()
+        temp = dict((i, 0) for i in p + s)
+        target = temp.copy()
+        letters = temp.copy()
+        i , j = 0, len(p)
+        
+        for letter in p:
+            target[letter] += 1
+        for l in s[i:j]:
+            letters[l]+= 1
+        if letters == target:ans.append(i)
 
+        while j < len(s):
+            if s[j] in p:
+                letters[s[i]] -= 1
+                i += 1
+                letters[s[j]] += 1
+                j += 1
 
+            else:
+                i += len(p) + 1
+                j = i + len(p)
+                letters = temp.copy()
+                for l in s[i:j]:
+                    letters[l]+= 1  
             
-
+            if letters == target:
+                ans.append(i)
+        return ans
