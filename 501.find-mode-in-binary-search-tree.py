@@ -1,5 +1,5 @@
 #
-# @lc app=leetcode id=501 lang=python
+# @lc app=leetcode id=501 lang=python3
 #
 # [501] Find Mode in Binary Search Tree
 #
