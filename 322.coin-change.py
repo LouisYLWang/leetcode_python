@@ -4,7 +4,25 @@
 # [322] Coin Change
 #
 class Solution:
+    # DP
+    def coinChange(self, coins: List[int], amount: int) -> int:
+        subprob_ls = [float('inf')] * (amount + 1)
+        subprob_ls[0] = 0
+        for i in coins:
+            if i <= amount:
+                subprob_ls[i] = 1
+                
+        for i in range(amount + 1):
+            for coin in coins:
+                if i <= coin:
+                    continue
+                subprob_ls[i] = min(subprob_ls[i], subprob_ls[i - coin] + 1)
+        ans = subprob_ls[amount] 
+        #print(subprob_ls)
+        return ans if ans != float('inf') else -1
+
     # memotization can get correct result but O(kn), 
+    '''
     def coinChange(self, coins: List[int], amount: int) -> int:
         memo = dict()
         def getMinCoin(coins, amount):
@@ -23,5 +41,5 @@ class Solution:
                 memo[amount] = min_num
                 return min_num if min_num != float('inf') else -1
         return getMinCoin(coins, amount)
-
+    '''
 
