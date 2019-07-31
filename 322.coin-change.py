@@ -4,32 +4,31 @@
 # [322] Coin Change
 #
 class Solution:
+    # memotization can get correct result but O(kn), 
     def coinChange(self, coins: List[int], amount: int) -> int:
         memo = dict()
         def getMinCoin(coins, amount):
             print(amount)
             if amount == 0:
                 return 0
-            if amount < 0 or amount < min(coins):
-                return -1
+            #if amount < 0 or amount < min(coins):
+            #    return -1
             if amount in coins:
                 return 1
             if amount in memo:
                 return memo[amount]
             else:
-                flag = False
                 min_num = float("inf")
-                for i in coins:
-                    if i < amount:
-                        cur = getMinCoin(coins, amount - i) 
-                        if cur > 0:
-                            if cur < min_num:
-                                min_num = cur + 1
-                                flag = True
-                if flag:
-                    memo[amount] = min_num
-                    return min_num
-                return -1   
+                for coin in coins:
+                    if amount < coin:
+                        continue
+                    cur = getMinCoin(coins, amount - coin) 
+                    if cur == -1: continue
+                    min_num = min(min_num, cur + 1)
+
+
+                memo[amount] = min_num
+                return min_num
         return getMinCoin(coins, amount)
         
         
