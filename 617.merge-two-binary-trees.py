@@ -48,7 +48,7 @@ class Solution(object):
             return t2
         return t1 
 
-        
+
     # recursion
     def mergeTrees(self, t1, t2):
         #print('before:', t1.val if t1 else None, t2.val if t2 else None)
@@ -61,6 +61,18 @@ class Solution(object):
             t1 = t2
         #print('after:', t1.val if t1 else None, t2.val if t2 else None)
         return t1 
+
+    # recursion V2.0
+    def mergeTrees(self, t1, t2):
+        #print('before:', t1.val if t1 else None, t2.val if t2 else None)
+        if t1 and t2:
+            t1.val += t2.val
+            t1.left = self.mergeTrees(t1.left, t2.left)
+            t1.right = self.mergeTrees(t1.right, t2.right)
+            return t1
+        else:
+            return t1 or t2
+
 
 
     
