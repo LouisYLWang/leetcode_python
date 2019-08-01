@@ -26,10 +26,20 @@ class Solution:
             
         RDL_1(root, 0)
         return root
-
+    #self implemented
+    def convertBST(self, root: TreeNode) -> TreeNode:
+        def RDL_1(root, mother_val):
+            if root:
+                r_sum = RDL_1(root.right, mother_val)
+                root.val += r_sum
+                l_sum = RDL_1(root.left, root.val)
+                return l_sum
+            return mother_val
+        RDL_1(root, 0)
+        return root
 
     #This problem is not supposed to use LDR, but RDL (reverse inorder traversals )
-    '''
+    
     def convertBST(self, root: TreeNode) -> TreeNode:
         def LDR_1(root):
             cur_ls = []
@@ -48,5 +58,5 @@ class Solution:
                 stack.append(cur.left)
                 stack.append(cur.right)
         return root
-    '''
+    
 
