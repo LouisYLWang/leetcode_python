@@ -19,7 +19,6 @@ class Solution(object):
         """
         stack_1 = [t1]
         stack_2 = [t2]
-        zero_node = TreeNode(0)
 
         while stack_1 or stack_2:
             cur_1 = stack_1.pop()
