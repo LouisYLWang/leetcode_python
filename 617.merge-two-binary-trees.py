@@ -11,6 +11,8 @@
 #         self.right = None
 
 class Solution(object):
+
+    # stack iteration 
     def mergeTrees(self, t1, t2):
         """
         :type t1: TreeNode
@@ -45,6 +47,23 @@ class Solution(object):
         if not t1:
             return t2
         return t1 
+
+        
+    # recursion
+    def mergeTrees(self, t1, t2):
+        #print('before:', t1.val if t1 else None, t2.val if t2 else None)
+        if t1 and t2:
+            t1.val += t2.val
+            t1.left = self.mergeTrees(t1.left, t2.left)
+            t1.right = self.mergeTrees(t1.right, t2.right)
+
+        if t2 and not t1:
+            t1 = t2
+        #print('after:', t1.val if t1 else None, t2.val if t2 else None)
+        return t1 
+
+
+    
                 
 
             
