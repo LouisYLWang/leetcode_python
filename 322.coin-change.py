@@ -18,7 +18,6 @@ class Solution:
                     continue
                 subprob_ls[i] = min(subprob_ls[i], subprob_ls[i - coin] + 1)
         ans = subprob_ls[amount] 
-        #print(subprob_ls)
         return ans if ans != float('inf') else -1
 
     # memotization can get correct result but O(kn), 
