@@ -6,11 +6,28 @@
 class Solution:
 
     def findUnsortedSubarray(self, nums: List[int]) -> int:
+        start = -1
+        end = -2
         
+        if nums:
+            max_ = nums[0]
+            n = len(nums)
+            min_ = nums[n-1]
 
+            for i in range(n):
+                j = n - i - 1
+                max_ = max(max_, nums[i])
+                min_ = min(min_, nums[j])
+                if nums[i] < max_:
+                    end = i
+                if nums[j] > min_:
+                    start = j
+                #print([i,nums[i],max_,end],[j,nums[j],min_,start])
+        return end - start + 1
 
 
     # not workable
+    '''
     def findUnsortedSubarray(self, nums: List[int]) -> int:
         
         i = 1
@@ -33,3 +50,4 @@ class Solution:
         if start == None:
             return 0
         return end - start + 1 
+    '''
