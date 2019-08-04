@@ -1,5 +1,5 @@
 #
-# @lc app=leetcode id=114 lang=python
+# @lc app=leetcode id=114 lang=python3
 #
 # [114] Flatten Binary Tree to Linked List
 #
