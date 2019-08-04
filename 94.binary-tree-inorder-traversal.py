@@ -16,41 +16,52 @@ class Solution:
     def inorderTraversal(self, root):
         if not root:
             return []
-        # 1 表示递归处理
-        stack = [(1, root)]
+        stack = [(0, root)]
         res = []
         while stack:
-            command, node = stack.pop()
-            if command == 0:
-                # 0 表示当前马上执行将结点的值添加到结果集中
+            visited, node = stack.pop()
+            if visited:
                 res.append(node.val)
             else:
-                # 关键在这里：因为是模拟系统栈，应该把中序遍历的顺序倒过来写
-                # 调整一下顺序就可以完成前序遍历和后序遍历
                 if node.right:
-                    stack.append((1, node.right))
-                stack.append((0, node))
+                    stack.append((0, node.right))
+                stack.append((1, node))
                 if node.left:
-                    stack.append((1, node.left))
+                    stack.append((0, node.left))
         return res
-    
+    # or 
     def inorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        res = []
-        if not root:
-            return res
+        stack = [(0,root)]
+        ans = list()
+        
+        while stack:
+            visited, node= stack.pop()
+            if visited:
+                ans.append(node.val)
+            elif not node:
+                continue
+            else:
+                stack.append((0, node.right))
+                stack.append((1, node))
+                stack.append((0, node.left))
+        return ans
+    
+    # slower but compact method without visted label
+    def inorderTraversal(self, root):
         stack = []
+        ans = []
         cur = root
         while stack or cur:
             while cur:
                 stack.append(cur)
                 cur = cur.left
             cur = stack.pop()
-            res.append(cur.val)
+            ans.append(cur.val)
             cur = cur.right
-        return res
+        return ans
     
 
