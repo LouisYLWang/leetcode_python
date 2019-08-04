@@ -15,17 +15,19 @@ class Solution:
         """
         Do not return anything, modify root in-place instead.
         """
-        stack = list()
+        stack = [root]
         seq = list()
         
-        while stack:
-            cur = stack.pop()
-            seq.append(cur)
-            if cur.left:
-                stack.append(cur.right)
-            if cur.right:
-                stack.append(cur.left)
-        
-        for i in range(len(seq)):
-            seq[i].right = seq[i + 1]
+        if root:
+            while stack:
+                cur = stack.pop()
+                seq.append(cur)
+                if cur.right:
+                    stack.append(cur.right)
+                if cur.left:
+                    stack.append(cur.left)
+
+            for i in range(len(seq)-1):
+                seq[i].right = seq[i + 1]
+                seq[i].left = None
 
