@@ -4,6 +4,7 @@
 # [287] Find the Duplicate Number
 #
 class Solution:
+    # slow 
     def findDuplicate(self, nums: List[int]) -> int:
         """
         :type nums: List[int]
