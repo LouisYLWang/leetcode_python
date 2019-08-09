@@ -1,5 +1,5 @@
 #
-# @lc app=leetcode id=208 lang=python
+# @lc app=leetcode id=208 lang=python3
 #
 # [208] Implement Trie (Prefix Tree)
 #
@@ -57,6 +57,7 @@ class Trie:
 # param_3 = obj.startsWith(prefix)
 
 # solution #2
+'''
 class Trie(object):
 
     def __init__(self):
@@ -104,4 +105,4 @@ class Trie(object):
 # obj.insert(word)
 # param_2 = obj.search(word)
 # param_3 = obj.startsWith(prefix)
-
+'''
