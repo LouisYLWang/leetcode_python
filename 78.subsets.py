@@ -19,7 +19,6 @@ class Solution:
         ans = list()
         for i in range(1<<len(nums)):
             ans.append(get_ele(i,nums))
-
         return ans
 
 
