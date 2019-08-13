@@ -5,6 +5,13 @@
 #
 class Solution(object):
     count = 0
+    
+    def extendPalindrome(self, s, l, r):
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                self.count += 1
+                l -= 1
+                r += 1
+    
     def countSubstrings(self, s):
         """
         :type s: str
@@ -14,12 +21,8 @@ class Solution(object):
             return 0
 
         for i in range(len(s)):
-            extendPalindrome(s, i, i)
-            extendPalindrome(s, i, i + 1)
+            self.extendPalindrome(s, i, i)
+            self.extendPalindrome(s, i, i + 1)
         return self.count
 
-        def extendPalindrome(s, l, r):
-            while l >= 0 and r < len(s) and s[l] == s[r]:
-                self.count += 1
-                l -= 1
-                r += 1
+        
