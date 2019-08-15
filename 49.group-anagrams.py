@@ -14,6 +14,8 @@ class Solution:
         str_map = dict()
         for s in strs:
             key = getHash(s)
+            # another way is:
+            # key = tuple(sorted(s))
             if key not in str_map:
                 str_map[key] = list()
             str_map[key].append(s)
