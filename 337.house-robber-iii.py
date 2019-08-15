@@ -19,7 +19,9 @@ class Solution:
                     ans += cur_in(root.left)
                 if root.right:
                     ans += cur_in(root.right)
-            return ans
+                return ans
+            else:
+                return root.val
     
         def cur_in(root):
             ans = root.val
