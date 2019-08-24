@@ -10,7 +10,25 @@
 #         self.left = None
 #         self.right = None
 
+#
 class Solution:
+    def rob(self, root: TreeNode) -> int:
+        def rob_sub(root):
+            if not root:
+                return [0,0]
+            
+            left = rob_sub(root.left)
+            right = rob_sub(root.right)
+            
+            return [max(left) + max(right), root.val + left[0] + right[0]]
+    
+        return max(rob_sub(root))
+    
+    
+
+
+# This method use recursion with memorization, but not performance well
+'''class Solution:
     rob_map = dict()
     def rob(self, root: TreeNode) -> int:
         def cur_out(root):
@@ -64,7 +82,7 @@ class Solution:
         
         if root: 
             return max(cur_out(root), cur_in(root))
-        return 0
+        return 0'''
     
         
 
