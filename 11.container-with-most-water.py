@@ -4,7 +4,7 @@
 # [11] Container With Most Water
 #
 class Solution(object):
-    def maxArea(self, height):
+    '''def maxArea(self, height):
         """
         :type height: List[int]
         :rtype: int
@@ -30,8 +30,25 @@ class Solution(object):
                 i_r -= 1 
             
                 
-        return max_a
+        return max_a'''
+
+    # compact way
+    def maxArea(self, height):
+        max_a = 0
+        l = 0
+        r = len(height) - 1
         
-        
+        while l < r:
+            cur_a = (r - l) * min(height[r], height[l])
+            
+            if cur_a > max_a:
+                max_a = cur_a
+
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+        return max_a 
+
         
 
