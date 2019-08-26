@@ -32,3 +32,25 @@ class Solution(object):
                 ans += cur.val
                 
         return ans
+
+# method #2 recursion without altering the orignal tree
+class Solution(object):
+    ans = 0
+    def add_value(self, root, val):
+        if root:
+            cur_val = root.val + 10 * val
+            if root.left:
+                self.add_value(root.left, cur_val)
+            if root.right:
+                self.add_value(root.right, cur_val)
+            if not root.right and not root.left:
+                self.ans += cur_val
+
+    
+    def sumNumbers(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        self.add_value(root, 0)
+        return self.ans
