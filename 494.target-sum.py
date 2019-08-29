@@ -3,6 +3,8 @@
 #
 # [494] Target Sum
 #
+
+# common up to bottom with memoritization
 class Solution:
     def __init__(self):
         self.res_hash = dict()
