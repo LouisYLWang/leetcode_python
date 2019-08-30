@@ -11,7 +11,6 @@ class Solution:
             while i < len(height) - 1:
                 temp = 0
                 j = i + 1
-                loc_max = height[i]
                 while height[j] < height[i]:
                     temp += height[i] - height[j] 
                     if j + 1 < len(height):
@@ -31,7 +30,6 @@ class Solution:
             while i < len(height) - 1:
                 temp = 0
                 j = i + 1
-                loc_max = height[i]
                 while height[j] < height[i]:
                     temp += height[i] - height[j] 
                     if j + 1 < len(height):
