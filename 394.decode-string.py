@@ -4,14 +4,18 @@
 # [394] Decode String
 #
 class Solution:
+    # use stack for nested questions is a natural way of thinking
+    # 
     def decodeString(self, s: str) -> str:
         stack = [[1,""]]
-        ans = ""
         i = 0
+        count = ''
         while i < len(s):
             if s[i] in '1234567890':
-                stack.append([int(s[i]),""])
-                i += 1
+                count += s[i]
+            elif s[i] == "[":
+                stack.append([int(count),""])
+                count = ""
             elif s[i] == "]":
                 cur = stack.pop()
                 stack[-1][1] += cur[0] * cur[1]
@@ -19,4 +23,5 @@ class Solution:
                 stack[-1][1] += s[i]
             i += 1
         return stack[0][1]
+
 
