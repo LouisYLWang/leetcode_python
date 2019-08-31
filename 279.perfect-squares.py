@@ -27,5 +27,14 @@ class Solution(object):
                     j += 1
                 ns_hash[i] = j_min
         return ns_hash[n] 
-        
-                
+
+    def numSquares(self, n: int) -> int:
+        dp = [float('inf') for i in range(n+1)]
+        dp[0] = 0        
+        for i in range(1,n+1):
+            j = 1
+            while i + j * j <= n:
+                dp[i + j * j] = min(dp[i+j*j], dp[i] + 1)
+
+                j += 1
+        return dp[-1]   
