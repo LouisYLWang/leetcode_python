@@ -19,7 +19,8 @@ class Solution(object):
             if ns_hash[i] != 1:
                 j_min = float('inf')
                 j = 1
-                while j ** 2 <= i:
+                while j ** 2 <= i // 2:
+                # the dummy version: while j ** 2 <= i:
                     count = ns_hash[j ** 2] + ns_hash[i - j ** 2]
                     if count < j_min:
                         j_min = count
