@@ -31,7 +31,9 @@ class Solution(object):
     def numSquares(self, n: int) -> int:
         dp = [float('inf') for i in range(n+1)]
         dp[0] = 0        
-        for i in range(1,n+1):
+        for i in range(0, n+1):
+            # transformation function:
+            # test all possible square and leave only the smallest combination
             j = 1
             while i + j * j <= n:
                 dp[i + j * j] = min(dp[i+j*j], dp[i] + 1)
