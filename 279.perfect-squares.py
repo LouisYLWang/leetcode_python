@@ -28,6 +28,7 @@ class Solution(object):
                 ns_hash[i] = j_min
         return ns_hash[n] 
 
+    # even slower but concise method
     def numSquares(self, n: int) -> int:
         dp = [float('inf') for i in range(n+1)]
         dp[0] = 0        
@@ -35,8 +36,7 @@ class Solution(object):
             # transformation function:
             # test all possible square and leave only the smallest combination
             j = 1
-            while i + j * j <= n:
-                dp[i + j * j] = min(dp[i+j*j], dp[i] + 1)
-
+            while i + j ** 2 <= n:
+                dp[i + j ** 2] = min(dp[i + j ** 2], dp[i] + 1)
                 j += 1
         return dp[-1]   
