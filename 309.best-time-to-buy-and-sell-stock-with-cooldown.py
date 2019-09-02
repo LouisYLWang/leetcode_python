@@ -5,30 +5,12 @@
 #
 class Solution(object):
     def maxProfit(self, prices):
-        """
-        :type prices: List[int]
-        :rtype: int
-        """
-
-        #pmax = prices[-1] - prices[0] 
-        pmax = 0
-        curi = None
-        
-        if prices:
-            if prices[-2] > prices[-1]:
-                prices[:] = prices[:-1]
-
-            for i in range(2, len(prices) -1):
-                pcur = prices[i-1] - prices[i + 1]
-                #print(i, pcur)
-                if pcur > pmax:
-                    pmax = pcur
-                    curi = i
-            pmax += prices[-1] - prices[0] 
-            #print(prices, curi)
-            if curi:
-                #print('1half', prices[:curi])
-                #print('2half', prices[curi+1:])
-                #return self.maxProfit(prices[:curi]) + self.maxProfit(prices[curi+1:])
-            return prices[-1] - prices[0]
-        return 0
+        if len(prices) < 2:
+            return 0
+        sell, buy, prev_sell, prev_buy = 0, -prices[0], 0, 0
+        for price in prices:
+            prev_buy = buy
+            buy = max(prev_sell - price, prev_buy)
+            prev_sell = sell
+            sell = max(prev_buy + price, prev_sell)
+        return sell
