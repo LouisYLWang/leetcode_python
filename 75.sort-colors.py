@@ -17,6 +17,18 @@ class Solution:
         for i in range(len(nums)):
             nums[i] = sorted[i]
 
+    def sortColors(self, nums: List[int]) -> None:
+        for id in range(len(nums)):
+            temp = nums[id]
+            nums[id] = 2
+            if temp < 2:
+                nums[j] = 1
+                j += 1
+            if temp < 1:
+                nums[i] = 0
+                i += 1
+            #print(i, j)
+
     
         
 
