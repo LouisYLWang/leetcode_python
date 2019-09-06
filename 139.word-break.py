@@ -4,6 +4,21 @@
 # [139] Word Break
 #
 class Solution(object):
+    # DP
+    def wordBreak(self, s, wordDict):
+        """
+        :type s: str
+        :type wordDict: List[str]
+        :rtype: bool
+        """
+        checker = [1]
+        for j in range(1, len(s)+1):
+            temp = False
+            for i in range(j):
+                temp |= checker[i] & (s[i:j] in wordDict)
+            checker.append(temp)
+        return checker[-1]
+
     # recursion
     def wordBreak(self, s, wordDict):
         """
