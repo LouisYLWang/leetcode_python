@@ -9,7 +9,6 @@ class Solution(object):
         i = j = 0
         if not chars:
             return 0
-        cur_char = chars[0]
         chars.append(None)
             
         while i < len(chars)-1:
@@ -20,7 +19,6 @@ class Solution(object):
                     for di in str(char_count):
                         chars[j] = di
                         j += 1
-                cur_char = chars[i] 
                 char_count = 1
             else:
                 char_count += 1
