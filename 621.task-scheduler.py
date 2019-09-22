@@ -10,5 +10,19 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        from collections import Counter
+        ct = Counter(tasks)
+        count_ls = ct.values()
+        count_ls.sort()
+        
+        max_ = max(count_ls)
+        
+        res = (n + 1) * (max_ -1)
+        
+
+        for i in ct:
+            if ct[i] == max_:
+                res += 1
+        return max(res, len(tasks))
         
 
