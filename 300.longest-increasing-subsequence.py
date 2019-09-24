@@ -16,3 +16,28 @@ class Solution:
             return max(dp)
         return 0
 
+    # DP + binary search
+    # important solution
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        n = len(nums)
+        dp = [0 for num in nums]    
+        lis = 0
+        
+        # iterate over nums, use num as target to make binary search, in order to find a suitable place to insert it into dp list
+        for num in nums:
+            l, r = 0, lis
+            
+            while l != r:
+                m = (l + r) // 2
+                if dp[m] < num:
+                    l = m + 1
+                else:
+                    r = m
+                    
+            # between the range of 0 to lis, update or insert the current num to the position that is no smaller than num
+            dp[l] = num
+            print(dp)
+            lis = max(l+1, lis)
+        return lis
+
+
