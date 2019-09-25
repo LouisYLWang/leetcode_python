@@ -13,6 +13,8 @@ class Solution:
         r = n - 1
         res = [-1, -1]
         while l < r:
+            
+            # at last, m == l, let left bound equal to target
             m = (l + r) // 2
             if target > nums[m]:
                 l = m + 1
@@ -26,6 +28,8 @@ class Solution:
         r = n - 1
         
         while l < r:
+            
+            # at last, m == r,  let right bound equal to target
             m = (l + r) // 2 + 1
             if target < nums[m]:
                 r = m - 1
