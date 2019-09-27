@@ -9,8 +9,22 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        #or just simply intervals.sort()
+        # or just simply intervals.sort()
         intervals = sorted(intervals, key = lambda _:_[0])
+
+        ans = []
+        
+        # usage of [-1] indexing
+        for interv in intervals:
+            if not ans or ans[-1][1] < interv[0]:
+                ans.append(interv)
+            elif interv[1] > ans[-1][1]:
+                ans[-1][1] = interv[1]
+                
+        return ans
+
+        # personal solution
+        '''
         if intervals:
             ans = [intervals[0]]
             i = 1
@@ -27,4 +41,4 @@ class Solution(object):
                     n += 1
                 i += 1
             return ans
-        
+        '''        
