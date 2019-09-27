@@ -46,7 +46,6 @@ class Solution(object):
                 r = n - 1
                 while l < r:
                     m = (l+r) // 2
-                    print(l,r,m)
                     if nums[m] < target:
                         l = m + 1 
                     else:
