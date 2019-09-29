@@ -7,7 +7,7 @@
 # Java
 
 class Solution {
-    /* method 1 greedy
+    // method 1 greedy
     public boolean canJump(int[] nums) {
         int n = nums.length;
         int cur = nums[n - 1];
@@ -18,8 +18,8 @@ class Solution {
         }
         return cur == 0;
     }
-}*/
-    
+
+        
     // method 2 dp from top to down
     public boolean canJump(int[] nums) {
         int n = nums.length;
@@ -40,6 +40,8 @@ class Solution {
         return nums[0] < 0;
     }
 }
+
+
 
 # Py
 class Solution:
