@@ -19,10 +19,8 @@ class Solution:
             dividend = -dividend
         if divisor < 0:
             divisor = -divisor
-            
         if divisor > dividend:
             return 0
-        
         
         res =  0
         cur = divisor
