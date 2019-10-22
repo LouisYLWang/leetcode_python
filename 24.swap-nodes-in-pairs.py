@@ -17,9 +17,7 @@ class Solution:
         if head:
             if head.next:
                 newhead = head.next
-
                 temp = head.next.next 
-
                 head.next.next = head
                 head.next = self.swapPairs(temp)
                 return newhead
