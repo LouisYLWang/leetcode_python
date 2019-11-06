@@ -3,7 +3,44 @@
 #
 # [207] Course Schedule
 #
+
+
 class Solution(object):
+    # bread first search
+    def canFinish(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: bool
+        """
+        indegree = [0 for i in range(numCourses)]        
+        
+        g = dict()
+        for (a, b) in prerequisites:
+            indegree[b] += 1
+            if a not in g:
+                g[a] = list()
+            g[a].append(b)
+        
+        q = list()        
+        for i in range(len(indegree)):
+            if indegree[i] == 0:
+                q.append(i)
+        
+        #print(indegree, g)
+        count = 0
+        while q:
+            course = q.pop()
+            count += 1
+            if course in g and g[course]:
+                for related in g[course]:
+                    if indegree[related] != 0:
+                        indegree[related] -= 1
+                    if indegree[related] == 0:
+                        q.append(related)
+                        
+        return count == numCourses
+    # deep first search
     def canFinish(self, numCourses, prerequisites):
         """
         :type numCourses: int
