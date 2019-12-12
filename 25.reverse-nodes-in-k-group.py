@@ -22,17 +22,24 @@ class Solution(object):
             return None
         
         cur = head
+
+        # check the rest listnode is enough for one group
         for i in range(k):
+            # check first then increment, or when k = n will not inverse
             if not cur:
                 return head
             cur = cur.next
         node = head
         pre = None
+
         for i in range(k-1):
-            temp = node.next
-            node.next = pre
-            pre = node
-            node = temp
+            # one line method to inverse
+            node.next, pre, node  =  pre, node, node.next
+            # basic linkedlist inverse
+            #temp = node.next
+            #node.next = pre
+            #pre = node
+            #node = temp
             
         node.next = pre
         head.next = self.reverseKGroup(cur, k)
